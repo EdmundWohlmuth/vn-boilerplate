@@ -1,0 +1,28 @@
+{
+  "Test_Dialogue_2":
+    {
+      "0": 
+      {
+      "Name": "DEBUG CHAR",
+      "Text": "Ay, this is from a totally new [color=hotpink].JSON File[/color]??",
+      "Face": 1
+      },
+      
+      "1": 
+      {
+      "Name": "TEST CHAR",
+      "Text": "You know it is, baby! time for a time loop!",
+      "Face": 1
+      },
+      
+      "2": 
+      {
+      "Name": "DEBUG CHAR",
+      "Text": "crazyest shit i've ever seen",
+      "Face": 1,
+
+      "Goto": true,  
+      "Goto_Text": "Test_Dialogue_2"
+      }
+    }
+}

@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfsgpotthimhr"]
+
+[ext_resource type="Script" uid="uid://c1djwxne3lpqp" path="res://Dialogue/Scripts/Dialogue_Manager.gd" id="1_8q75f"]
+[ext_resource type="JSON" path="res://GameData/Json/TestDialogue.json" id="2_ntt53"]
+[ext_resource type="PackedScene" uid="uid://tvkgyu8i1cjs" path="res://User_Interface/UI_Objects/Scenes/option_button.tscn" id="2_ypu1f"]
+[ext_resource type="JSON" path="res://GameData/Json/TestDialogue2.json" id="3_uipae"]
+
+[node name="DialogueBox" type="Control" node_paths=PackedStringArray("dialogue_panel", "dialogue_text_label", "dialogue_name_label", "desision_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_8q75f")
+dialogue_panel = NodePath("Panel")
+dialogue_text_label = NodePath("Panel/RichTextBody")
+dialogue_name_label = NodePath("Panel/Panel/RichTextLabel")
+desision_container = NodePath("DesisionContainer")
+Dialogues = Array[JSON]([ExtResource("2_ntt53"), ExtResource("3_uipae")])
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 472.0
+offset_right = 934.0
+offset_bottom = 636.0
+mouse_default_cursor_shape = 2
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -40.0
+offset_right = 368.0
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 360.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/table_h_separation = 0
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "CHARACTER NAME"
+scroll_active = false
+
+[node name="RichTextBody" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 712.0
+offset_bottom = 164.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in orci blandit, consequat risus ut, ullamcorper magna. Phasellus iaculis purus libero, in sollicitudin velit aliquam vitae. Duis non dolor iaculis, vulputate nisl ut, mattis libero. Suspendisse potenti. Aliquam accumsan est non tortor ultrices fermentum. Praesent non convallis neque, vitae dapibus ligula. Suspendisse sollicitudin nisl dolor, nec facilisis nunc efficitur a. Nam bibendum posuere pellentesque. Donec nibh metus, viverra porta ipsum in, ultricies vehicula lectus."
+scroll_active = false
+
+[node name="DesisionContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 17.0
+offset_right = 934.0
+offset_bottom = 415.0
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="Button0" parent="DesisionContainer" instance=ExtResource("2_ypu1f")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button1" parent="DesisionContainer" instance=ExtResource("2_ypu1f")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button2" parent="DesisionContainer" instance=ExtResource("2_ypu1f")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button3" parent="DesisionContainer" instance=ExtResource("2_ypu1f")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button4" parent="DesisionContainer" instance=ExtResource("2_ypu1f")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button5" parent="DesisionContainer" instance=ExtResource("2_ypu1f")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button6" parent="DesisionContainer" instance=ExtResource("2_ypu1f")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button7" parent="DesisionContainer" instance=ExtResource("2_ypu1f")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button8" parent="DesisionContainer" instance=ExtResource("2_ypu1f")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button9" parent="DesisionContainer" instance=ExtResource("2_ypu1f")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[connection signal="mouse_entered" from="Panel" to="." method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="Panel" to="." method="_on_panel_mouse_exited"]

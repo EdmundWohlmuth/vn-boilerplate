@@ -1,0 +1,10 @@
+{
+  "SAVE_DATA":
+  {
+    "player_name": "Player",
+    "current_chapter": 0,
+    "current_index": 0,
+    "sfx_volume": 100,
+    "music_volume": 100
+  }
+}

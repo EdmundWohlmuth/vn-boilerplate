@@ -1,0 +1,59 @@
+{
+  "TEST_DIALOGUE": 
+  {
+      "0": 
+      {
+      "Name": "TEST CHAR",
+      "Text": "yo, this is a [color=hotpink]Long Ass BBCode[/color], and a test Dialogue",
+      "Face": 1
+      },
+      
+      "1": 
+      {
+      "Name": "TEST CHAR",
+      "Text": "crazyest shit i've ever seen 😆",
+      "Face": 1
+      },
+      
+      "2": 
+      {
+      "Name": "DEBUG CHAR",
+      "Text": "YOOOO I'M HERE TOO",
+      "Face": 1,
+      
+      "Options": true,
+      "Options_Num": 2,
+      
+      "Option_0_Name": "Goto 2",
+      "Go_To_Text_0": "TEST2",
+      
+      "Option_1_Name": "Goto 3",
+      "Go_To_Text_1": "TEST3"
+      }
+  },
+  "TEST2":
+    {
+      "0": 
+      {
+      "Name": "Giancarlo Esposito",
+      "Text": "I need my Test dialogue Two",
+      "Face": 1,
+      
+      "End_Chapter": true,
+      "Chapter_Index": 1,
+      "Goto_Text": "Test_Dialogue_2"
+      }
+    },
+    "TEST3":
+    {
+      "0": 
+      {
+      "Name": "TEST CHAR",
+      "Text": "The joke was in test dialogue 2, this is three!",
+      "Face": 1,
+      
+      "Goto": true,
+      "Goto_Text": "TEST_DIALOGUE"
+      }
+    }
+}

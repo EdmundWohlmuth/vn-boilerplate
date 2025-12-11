@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://tvkgyu8i1cjs"]
+
+[ext_resource type="Script" uid="uid://dlk7g5eeud5es" path="res://User_Interface/UI_Objects/Scripts/option_button.gd" id="1_cybkm"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(300, 25)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_cybkm")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
