@@ -149,8 +149,13 @@ func set_options(num_to_enable:int):
     child.text = dialogue[str(index - 1)]["Option_" + str(o) + "_Name"]
     child.visible = true
 
+# Changes the JSON to read from
 func goto_next_chapter():
   var dialogue_to_start:String = dialogue[str(index - 1)]["Goto_Text"]
   
   dialogue_data = Dialogues[dialogue[str(index - 1)]["Chapter_Index"]].data
   start_dialogue(dialogue_to_start)
+
+# Enables a new scene to display other stuff
+func goto_special():
+  pass

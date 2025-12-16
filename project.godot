@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="VN Boilerplate"
-run/main_scene="uid://dfsgpotthimhr"
+run/main_scene="uid://ei0q6ghxw4e4"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
