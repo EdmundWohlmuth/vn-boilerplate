@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1xl7dxsmo0l4"]
+[gd_scene load_steps=4 format=3 uid="uid://b1xl7dxsmo0l4"]
+
+[ext_resource type="Script" uid="uid://bp3g6ojigf24t" path="res://Characters/character.gd" id="1_53lx6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_svyl3"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_svyl3"]
+albedo_color = Color(1, 0.176471, 1, 1)
+
 [node name="TEMP" type="Node3D"]
+script = ExtResource("1_53lx6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("BoxMesh_svyl3")
+surface_material_override/0 = SubResource("StandardMaterial3D_svyl3")

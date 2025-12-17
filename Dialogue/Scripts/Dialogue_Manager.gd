@@ -13,7 +13,8 @@ extends Control
 var dialogue_data = {}
 
 # == SIGNALS == #
-#signal finished_scene
+#signal add_char
+#signal remove_char
 
 # == BOOLS == #
 var is_selected:bool = false
@@ -24,9 +25,12 @@ var dialogue:Dictionary
 var yes_key:Dictionary
 var no_key:Dictionary
 var index:int = 0
+var is_read:bool = false
 
 # _Ready runs on runtime
 func _ready():
+  GameManager.dialogue_m = self
+  
   dialogue_data = Dialogues[0].data
   dialogue_text_label.text = ""
   dialogue_name_label.text = ""
@@ -35,8 +39,6 @@ func _ready():
   for i in desision_container.get_children().size():
     var but:Button = desision_container.get_child(i)
     but.connect("return_dialogue", start_dialogue)
-  
-  start_dialogue("TEST_DIALOGUE")
 
 # Starts a dialogue chain from it's beginging  
 func start_dialogue(dialogue_to_start:String):
@@ -68,7 +70,9 @@ func slow_display_text(text:String):
   dialogue_text_label.text = ""
   dialogue_name_label.text = dialogue[str(index)]["Name"]
   
-  #print(dialogue[str(index)]["Text"])
+  # Check if a character needs to be added / removed
+  character_check()
+  
   # Iterate through the String and add the next letter to the Textbox
   for i in text.length():
     # checking for BBCode element ([)
@@ -92,6 +96,13 @@ func slow_display_text(text:String):
   is_text_finished = true
   index += 1
   print("index++")
+
+# Checks to see if a character is added and or removed
+func character_check():
+  if dialogue[str(index)].has("Add_Char"):
+    GameManager.stage_m.add_actor(dialogue[str(index)]["Name"], dialogue[str(index)]["Enter_From"])
+  if dialogue[str(index)].has("Remove_Char"):
+     GameManager.stage_m.remove_actor(dialogue[str(index)]["Name"], dialogue[str(index)]["Exit_To"])
   
 # parses the string to display enclosed [] at the same time
 func complete_text_effect(string_index, text:String) -> String:
@@ -107,9 +118,12 @@ func full_display_text(text:String):
   dialogue_text_label.text = text
   is_text_finished = true
   index += 1
-  print("index++")
 
 func _input(event):
+  if event.is_action_pressed("Click") && !is_read:
+    is_read = true
+    start_dialogue("TEST_DIALOGUE")
+  
   # Skip slow print out of dialogue on click 
   if (event.is_action_pressed("Click") && is_selected && !is_text_finished):
     full_display_text(dialogue[str(index)]["Text"])

@@ -3,6 +3,9 @@
   {
       "0": 
       {
+      "Add_Char": 1,
+      "Enter_From": "LEFT",   
+         
       "Name": "TEST CHAR",
       "Text": "yo, this is a [color=hotpink]Long Ass BBCode[/color], and a test Dialogue",
       "Face": 1
@@ -17,6 +20,9 @@
       
       "2": 
       {
+      "Add_Char": 1,
+      "Enter_From": "RIGHT",
+        
       "Name": "DEBUG CHAR",
       "Text": "YOOOO I'M HERE TOO",
       "Face": 1,
@@ -35,6 +41,9 @@
     {
       "0": 
       {
+      "Add_Char": 1,
+      "Enter_From": "LEFT",
+        
       "Name": "Giancarlo Esposito",
       "Text": "I need my Test dialogue Two",
       "Face": 1,

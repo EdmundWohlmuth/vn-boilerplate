@@ -7,7 +7,7 @@ class_name stage_manager
 const TEMP = preload("res://Gameplay/Scenes/temp.tscn")
 
 # === Position Vars === #
-var actors_num:int = 10
+var actors_num:int = 1
 var total_space:float = 0
 var position_array:Array[Vector3]
 
@@ -26,22 +26,43 @@ var actor_array:Array ## probably of type Node3D or Skeleton or something
 @export_category("Setting the Stage")
 @export var all_actors:Array
 @export var position_offset:Vector3
-
+@export var time_to_enter:float = 0.25
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+  GameManager.stage_m = self
+  
   total_space = ((off_stage_left.position.x + off_stage_right.position.x) - off_stage_left.position.x)
-  var temp_name:StringName = "Test"
-  add_actor(temp_name)
 
 # Starts the process to adding a character to the scene
-func add_actor(actor_name:StringName): 
-  for actor in all_actors:
-    if actor.char_name == actor_name:
-      break
+func add_actor(actor_name:StringName, enter_text:StringName = "LEFT"):
+  var enter_from:enter_pos
+  var has_added:bool = false
+  
+  match enter_text:
+    "LEFT": enter_from = enter_pos.LEFT
+    "RIGHT": enter_from = enter_pos.RIGHT
+  
+  var instance = TEMP.instantiate()
+  instance.char_name = actor_name
+  add_child(instance) ## This will cause bugs <-- Fix me pls
+  
+  #for actor in actor_array:
+    #if actor.char_name == actor_name:
+      #has_added = true
+  
+  match enter_from:
+    enter_pos.LEFT: 
+      actor_array.push_front(instance)
+      instance.position = (Vector3(off_stage_left.position.x - 2, 0, 0) + position_offset)
+    enter_pos.RIGHT: 
+      actor_array.push_back(instance)
+      instance.position = (Vector3(off_stage_right.position.x + 2, 0, 0) + position_offset)  
+    enter_pos.TOP: pass
+    enter_pos.BOTTOM: pass
   
   actors_num += 1
-  set_positions(enter_pos.LEFT)
+  set_positions(enter_from)
 
 # Sets the Vector3 Positions where characters will be placed
 func set_positions(enter_from:enter_pos):
@@ -56,9 +77,30 @@ func set_positions(enter_from:enter_pos):
   for x in actors_num - 1:
     pos.x += pos_dist
     position_array.append(pos)
-    var instance = TEMP.instantiate()
-    add_child(instance)
-    instance.position = pos
+    var tween = get_tree().create_tween()
+    tween.tween_property(actor_array[x], "position", position_array[x], time_to_enter)
+    
+# Starts the process for removing a character from the scene
+func remove_actor(to_remove:StringName, exit_dir:StringName = "RIGHT"):
+  var exit_to:enter_pos
+  var can_remove:bool = false
+  var temp_array:Array = actor_array
+  var removed_char
+  
+  match exit_dir:
+    "LEFT": exit_to = enter_pos.LEFT
+    "RIGHT": exit_to = enter_pos.RIGHT
+  
+  for a in temp_array.size():
+    if temp_array[a].name == to_remove: 
+      can_remove = true
+      actor_array.remove_at(a)
+      removed_char = actor_array[a]
+      break
+  
+  if can_remove: removed_char.queue_free()
+  
+  actors_num -= 1
 
 # this will place all characters based on the required setup from load game
 func load_scene():

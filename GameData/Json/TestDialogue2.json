@@ -3,6 +3,9 @@
     {
       "0": 
       {
+      "Remove_Char": "Giancarlo Esposito",
+      "Exit_To": "RIGHT",
+        
       "Name": "DEBUG CHAR",
       "Text": "Ay, this is from a totally new [color=hotpink].JSON File[/color]??",
       "Face": 1

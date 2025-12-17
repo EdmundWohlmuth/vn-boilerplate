@@ -2,6 +2,8 @@
   "SAVE_DATA":
   {
     "player_name": "Player",
+    "bod_type_1": true,
+    "bod_type_2": true,
     "current_chapter": 0,
     "current_index": 0,
     "sfx_volume": 100,
