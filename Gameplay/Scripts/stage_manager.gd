@@ -37,7 +37,10 @@ func _ready() -> void:
 # Starts the process to adding a character to the scene
 func add_actor(actor_name:StringName, enter_text:StringName = "LEFT"):
   var enter_from:enter_pos
-  var has_added:bool = false
+  
+  for actor in actor_array:
+    if actor.char_name == actor_name:
+      return
   
   match enter_text:
     "LEFT": enter_from = enter_pos.LEFT
@@ -46,11 +49,7 @@ func add_actor(actor_name:StringName, enter_text:StringName = "LEFT"):
   var instance = TEMP.instantiate()
   instance.char_name = actor_name
   add_child(instance) ## This will cause bugs <-- Fix me pls
-  
-  #for actor in actor_array:
-    #if actor.char_name == actor_name:
-      #has_added = true
-  
+
   match enter_from:
     enter_pos.LEFT: 
       actor_array.push_front(instance)
@@ -65,7 +64,7 @@ func add_actor(actor_name:StringName, enter_text:StringName = "LEFT"):
   set_positions(enter_from)
 
 # Sets the Vector3 Positions where characters will be placed
-func set_positions(enter_from:enter_pos):
+func set_positions(enter_from:enter_pos = enter_pos.LEFT):
   if actors_num <= 0: return
   # Set vars
   var pos:Vector3 = position_offset
@@ -81,7 +80,8 @@ func set_positions(enter_from:enter_pos):
     tween.tween_property(actor_array[x], "position", position_array[x], time_to_enter)
     
 # Starts the process for removing a character from the scene
-func remove_actor(to_remove:StringName, exit_dir:StringName = "RIGHT"):
+func remove_actor(to_remove:StringName, exit_dir:StringName = "RIGHT"): ## JUST REDO THIS
+  print("to remove: " + to_remove)
   var exit_to:enter_pos
   var can_remove:bool = false
   var temp_array:Array = actor_array
@@ -91,16 +91,19 @@ func remove_actor(to_remove:StringName, exit_dir:StringName = "RIGHT"):
     "LEFT": exit_to = enter_pos.LEFT
     "RIGHT": exit_to = enter_pos.RIGHT
   
-  for a in temp_array.size():
-    if temp_array[a].name == to_remove: 
+  for a in actor_array.size() -1:
+    if actor_array[a].char_name == to_remove: 
       can_remove = true
-      actor_array.remove_at(a)
+      temp_array.remove_at(a - 1)
       removed_char = actor_array[a]
-      break
+      print("removed: " + actor_array[a].char_name)
   
-  if can_remove: removed_char.queue_free()
-  
-  actors_num -= 1
+  if can_remove: 
+    removed_char.queue_free()
+    actors_num -= 1
+    actor_array = temp_array
+    set_positions()
+    return
 
 # this will place all characters based on the required setup from load game
 func load_scene():

@@ -102,7 +102,7 @@ func character_check():
   if dialogue[str(index)].has("Add_Char"):
     GameManager.stage_m.add_actor(dialogue[str(index)]["Name"], dialogue[str(index)]["Enter_From"])
   if dialogue[str(index)].has("Remove_Char"):
-     GameManager.stage_m.remove_actor(dialogue[str(index)]["Name"], dialogue[str(index)]["Exit_To"])
+    GameManager.stage_m.remove_actor(dialogue[str(index)]["Remove_Char"], dialogue[str(index)]["Exit_To"])
   
 # parses the string to display enclosed [] at the same time
 func complete_text_effect(string_index, text:String) -> String:
