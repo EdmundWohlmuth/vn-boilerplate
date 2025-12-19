@@ -14,3 +14,7 @@ script = ExtResource("1_53lx6")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("BoxMesh_svyl3")
 surface_material_override/0 = SubResource("StandardMaterial3D_svyl3")
+
+[node name="DeleteTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]

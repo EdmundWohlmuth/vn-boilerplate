@@ -5,6 +5,7 @@ class_name stage_manager
 @onready var off_stage_left: Node3D = $OffStageLeft
 @onready var off_stage_right: Node3D = $OffStageRight
 const TEMP = preload("res://Gameplay/Scenes/temp.tscn")
+@onready var delete_timer: Timer = $Delete_Act_Timer
 
 # === Position Vars === #
 var actors_num:int = 1
@@ -21,6 +22,7 @@ enum enter_pos
 
 # === Actor Vars === #
 var actor_array:Array ## probably of type Node3D or Skeleton or something
+var removed_char
 
 # === Export Vars === #
 @export_category("Setting the Stage")
@@ -81,11 +83,9 @@ func set_positions(enter_from:enter_pos = enter_pos.LEFT):
     
 # Starts the process for removing a character from the scene
 func remove_actor(to_remove:StringName, exit_dir:StringName = "RIGHT"): ## JUST REDO THIS
-  print("to remove: " + to_remove)
   var exit_to:enter_pos
   var can_remove:bool = false
   var temp_array:Array = actor_array
-  var removed_char
   
   match exit_dir:
     "LEFT": exit_to = enter_pos.LEFT
@@ -96,12 +96,19 @@ func remove_actor(to_remove:StringName, exit_dir:StringName = "RIGHT"): ## JUST 
       can_remove = true
       temp_array.remove_at(a - 1)
       removed_char = actor_array[a]
-      print("removed: " + actor_array[a].char_name)
   
-  if can_remove: 
-    removed_char.queue_free()
+  if can_remove:
+    var tween = get_tree().create_tween()
+    
+    match exit_to:
+      enter_pos.LEFT:
+        tween.tween_property(removed_char, "position", off_stage_left.position + Vector3(off_stage_left.position.x - 2,1,0), 0.25)
+      enter_pos.RIGHT:
+        tween.tween_property(removed_char, "position", off_stage_right.position + Vector3(off_stage_right.position.x + 2,1,0), 0.25)
+        
+    actor_array.erase(removed_char)
+    removed_char.delete_timer.start()
     actors_num -= 1
-    actor_array = temp_array
     set_positions()
     return
 
