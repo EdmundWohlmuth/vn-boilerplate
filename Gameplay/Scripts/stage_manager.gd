@@ -37,13 +37,13 @@ func _ready() -> void:
   total_space = ((off_stage_left.position.x + off_stage_right.position.x) - off_stage_left.position.x)
 
 # Starts the process to adding a character to the scene
-func add_actor(actor_name:StringName, enter_text:StringName = "LEFT"):
+func add_actor(actor_name:StringName, enter_text:StringName = "LEFT", num_to_add:int = 1):
   var enter_from:enter_pos
-  
+  # iterate through current 'actors' so not to add soneone who's already there
   for actor in actor_array:
     if actor.char_name == actor_name:
       return
-  
+  # Translate StringName to enum
   match enter_text:
     "LEFT": enter_from = enter_pos.LEFT
     "RIGHT": enter_from = enter_pos.RIGHT
@@ -86,17 +86,17 @@ func remove_actor(to_remove:StringName, exit_dir:StringName = "RIGHT"): ## JUST 
   var exit_to:enter_pos
   var can_remove:bool = false
   var temp_array:Array = actor_array
-  
+  # Convert StringName to enum
   match exit_dir:
     "LEFT": exit_to = enter_pos.LEFT
     "RIGHT": exit_to = enter_pos.RIGHT
-  
+  # Find the 'actor' to delete via StringName
   for a in actor_array.size() -1:
     if actor_array[a].char_name == to_remove: 
       can_remove = true
       temp_array.remove_at(a - 1)
       removed_char = actor_array[a]
-  
+   # if there's an actor to delete this strarts the process
   if can_remove:
     var tween = get_tree().create_tween()
     

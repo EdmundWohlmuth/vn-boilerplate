@@ -4,7 +4,8 @@
       "0": 
       {
       "Add_Char": 1,
-      "Enter_From": "LEFT",   
+      "Enter_From": "LEFT", 
+      "Char_to_Add": "TEST CHAR",
          
       "Name": "TEST CHAR",
       "Text": "yo, this is a [color=hotpink]Long Ass BBCode[/color], and a test Dialogue",
@@ -22,6 +23,7 @@
       {
       "Add_Char": 1,
       "Enter_From": "RIGHT",
+      "Char_to_Add": "DEBUG CHAR",
         
       "Name": "DEBUG CHAR",
       "Text": "YOOOO I'M HERE TOO",
@@ -43,6 +45,7 @@
       {
       "Add_Char": 1,
       "Enter_From": "LEFT",
+      "Char_to_Add": "Giancarlo Esposito",
         
       "Name": "Giancarlo Esposito",
       "Text": "I need my Test dialogue Two",

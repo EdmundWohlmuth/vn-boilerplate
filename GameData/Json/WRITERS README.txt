@@ -55,4 +55,13 @@ Some notes on creating Dialogues:
       }
     }
   
+  5. To add a character you will need to add the keys: 
+     "Add_Char": 1,
+     "Enter_From": "x", - with x being either: LEFT, RIGHT
+     "Char_to_add": "Giancarlo Esposito",
+  
+  6. To remove a character you need to add the following keys:
+      "Remove_Char": "Giancarlo Esposito",
+      "Exit_To": "LEFT",
+  
   # EXAMPLE FINISHED

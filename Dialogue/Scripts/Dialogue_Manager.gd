@@ -95,12 +95,11 @@ func slow_display_text(text:String):
     
   is_text_finished = true
   index += 1
-  print("index++")
 
 # Checks to see if a character is added and or removed
 func character_check():
   if dialogue[str(index)].has("Add_Char"):
-    GameManager.stage_m.add_actor(dialogue[str(index)]["Name"], dialogue[str(index)]["Enter_From"])
+    GameManager.stage_m.add_actor(dialogue[str(index)]["Char_to_Add"], dialogue[str(index)]["Enter_From"], dialogue[str(index)]["Add_Char"])
   if dialogue[str(index)].has("Remove_Char"):
     GameManager.stage_m.remove_actor(dialogue[str(index)]["Remove_Char"], dialogue[str(index)]["Exit_To"])
   

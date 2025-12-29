@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm8wkj0d2hmoy"]
+
+[ext_resource type="Script" uid="uid://bft5wllftnlxr" path="res://User_Interface/Scripts/scene_viewer_ui.gd" id="1_ain0o"]
+
+[node name="Scene_Viewer_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ain0o")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 569.0
+offset_right = 1152.0
+offset_bottom = 649.0
+mouse_filter = 2
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="Rot_L_Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "<---"
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel"]
+layout_mode = 0
+offset_top = 19.0
+offset_right = 940.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center] 15 Deg [/center]"
+
+[node name="Rot_R_Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "--->"
+
+[connection signal="pressed" from="HBoxContainer/Rot_L_Button" to="." method="_on_rot_l_button_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Panel" to="." method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/Panel" to="." method="_on_panel_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/Rot_R_Button" to="." method="_on_rot_r_button_pressed"]
