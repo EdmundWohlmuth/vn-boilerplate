@@ -8,6 +8,9 @@ var deg_to_rotate:int = 15
 # === Characters === #
 @export var char_01:MeshInstance3D
 
+func _ready() -> void:
+  UiManager.scene_viewer_ui.scene_viewer = self
+
 # set the rotation index to change the degrees that the character will rotate by
 func change_rot_index(increase_index:bool):
   if increase_index && (rot_index + 1) >= rot_degs.size():

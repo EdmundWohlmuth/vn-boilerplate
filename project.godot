@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="VN Boilerplate"
-run/main_scene="uid://bxm3jnbjv060r"
+run/main_scene="uid://hsvwbbfx6vvu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://GameData/Scripts/GameManager.gd"
+UiManager="*res://User_Interface/Scenes/ui_manager.tscn"
+Scene_Manager="*res://GameData/Scripts/SceneManager.gd"
+SignalBus="*res://GameData/Scripts/SignalBus.gd"
 
 [display]
 

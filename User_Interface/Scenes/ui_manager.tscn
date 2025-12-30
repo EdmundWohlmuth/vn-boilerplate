@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc4sbwmbkhexm"]
+[gd_scene load_steps=6 format=3 uid="uid://bc4sbwmbkhexm"]
 
 [ext_resource type="PackedScene" uid="uid://cm8wkj0d2hmoy" path="res://User_Interface/Scenes/scene_viewer_ui.tscn" id="1_2fmql"]
+[ext_resource type="Script" uid="uid://naruaqkiij88" path="res://User_Interface/Scripts/ui_manager.gd" id="1_30ged"]
 [ext_resource type="PackedScene" uid="uid://dfsgpotthimhr" path="res://Dialogue/Scenes/dialogue_box.tscn" id="2_oawob"]
+[ext_resource type="PackedScene" uid="uid://bddphnjcatll7" path="res://User_Interface/Scenes/loading_screen.tscn" id="3_hqko7"]
+[ext_resource type="PackedScene" uid="uid://cus315aqtk4qn" path="res://User_Interface/Scenes/main_menu.tscn" id="5_7rp2k"]
 
 [node name="UIManager" type="Control"]
 layout_mode = 3
@@ -10,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_30ged")
 
 [node name="Scene_Viewer_UI" parent="." instance=ExtResource("1_2fmql")]
 visible = false
@@ -17,4 +21,11 @@ layout_mode = 1
 
 [node name="DialogueBox" parent="." instance=ExtResource("2_oawob")]
 visible = false
+layout_mode = 1
+
+[node name="loading_screen" parent="." instance=ExtResource("3_hqko7")]
+visible = false
+layout_mode = 1
+
+[node name="Main_Menu" parent="." instance=ExtResource("5_7rp2k")]
 layout_mode = 1

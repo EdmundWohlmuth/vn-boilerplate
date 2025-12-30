@@ -29,6 +29,7 @@ var is_read:bool = false
 
 # _Ready runs on runtime
 func _ready():
+  SignalBus.connect("gameplay_loaded", start_dialogue)
   GameManager.dialogue_m = self
   
   dialogue_data = Dialogues[0].data
@@ -119,9 +120,9 @@ func full_display_text(text:String):
   index += 1
 
 func _input(event):
-  if event.is_action_pressed("Click") && !is_read:
-    is_read = true
-    start_dialogue("TEST_DIALOGUE")
+  #if event.is_action_pressed("Click") && !is_read:
+    #is_read = true
+    #start_dialogue("TEST_DIALOGUE")
   
   # Skip slow print out of dialogue on click 
   if (event.is_action_pressed("Click") && is_selected && !is_text_finished):
