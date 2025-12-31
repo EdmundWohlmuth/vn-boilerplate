@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=3 uid="uid://nrnwbvvk6nrk"]
+
+[ext_resource type="PackedScene" uid="uid://byn2f4t78opxj" path="res://Assets/Models/TEST_MODEL_01.glb" id="1_dfc5c"]
+[ext_resource type="Shader" uid="uid://t3dw8n4rdco0" path="res://Art_Test/Shaders/new.gdshader" id="2_ak8nx"]
+[ext_resource type="Shader" uid="uid://d2qhobfyyknuy" path="res://Art_Test/Shaders/character_outline.gdshader" id="3_xlaqs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rbuw4"]
+shader = ExtResource("2_ak8nx")
+shader_parameter/mode = 5
+shader_parameter/linearColorSpace = true
+shader_parameter/color1 = Vector4(1, 0.5, 0.8, 1)
+shader_parameter/color2 = Vector4(0.4, 0.8, 1, 1)
+shader_parameter/direction = Vector2(0.2, 1)
+shader_parameter/opacity = 0.01
+
+[sub_resource type="QuadMesh" id="QuadMesh_jvl0b"]
+material = SubResource("ShaderMaterial_rbuw4")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvl0b"]
+render_priority = 0
+shader = ExtResource("3_xlaqs")
+shader_parameter/shadow_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/shadow_thickness = 3.0
+
+[sub_resource type="Environment" id="Environment_jvl0b"]
+ssao_radius = 5.88
+ssao_power = 1.09806
+ssao_sharpness = 1.0
+glow_enabled = true
+glow_intensity = 0.44
+glow_strength = 0.55
+glow_bloom = 0.25
+glow_hdr_scale = 1.95
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_iytjt"]
+dof_blur_far_distance = 5.39
+dof_blur_far_transition = 643.42
+dof_blur_amount = 0.06
+
+[sub_resource type="Compositor" id="Compositor_jvl0b"]
+
+[node name="TEST_MODEL_01" instance=ExtResource("1_dfc5c")]
+
+[node name="Skeleton3D" parent="Arm_Char" index="0"]
+bones/1/position = Vector3(0.00401509, 2.60274, -0.420707)
+bones/2/position = Vector3(-0.473999, 0.218489, 0.166271)
+bones/2/rotation = Quaternion(-0.108178, 0.698783, 0.698783, 0.108178)
+bones/3/rotation = Quaternion(0.644772, -0.218149, 0.680111, -0.272267)
+bones/4/rotation = Quaternion(-0.119965, -0.731168, -0.130399, 0.658785)
+bones/5/position = Vector3(0.0901465, 1.07488, -0.427497)
+bones/5/rotation = Quaternion(-0.0618656, 0.704553, -0.704395, -0.0600368)
+bones/6/position = Vector3(-1.20079, 2.76163, 0.0634602)
+bones/7/position = Vector3(-0.157742, 2.55158, -0.537951)
+bones/7/rotation = Quaternion(-0.00582746, 0.731118, -0.00543721, 0.682205)
+bones/9/rotation = Quaternion(-0.568502, -0.373158, 0.72815, 0.0857662)
+bones/10/rotation = Quaternion(-0.119975, 0.731217, 0.13039, 0.65873)
+bones/11/position = Vector3(0.110363, 0.920376, -0.075894)
+bones/12/position = Vector3(1.39387, 3.11094, 0.366072)
+bones/12/rotation = Quaternion(-0.230231, 0.668576, 0.668576, -0.230231)
+bones/14/position = Vector3(0, 1.9031, 0)
+bones/14/rotation = Quaternion(0.00710556, -0.0115762, 0.0420106, 0.999025)
+bones/15/rotation = Quaternion(0.0601696, -5.53977e-10, 4.59218e-10, 0.998188)
+bones/16/rotation = Quaternion(-0.643982, -0.104825, 0.684629, 0.324932)
+bones/17/rotation = Quaternion(-0.766125, 0.000456955, -0.388118, 0.512267)
+bones/18/rotation = Quaternion(0.0506432, 0.1208, -0.294344, 0.946681)
+bones/19/rotation = Quaternion(1.82756e-07, -2.90585e-08, 0.667702, 0.744429)
+bones/20/rotation = Quaternion(-3.41021e-07, -4.18994e-07, 0.220209, 0.975453)
+bones/21/rotation = Quaternion(2.75416e-07, -3.51613e-07, 0.629004, 0.777402)
+bones/22/rotation = Quaternion(-4.68709e-08, -2.23905e-08, 0.170348, 0.985384)
+bones/23/rotation = Quaternion(3.39904e-07, -2.60869e-07, 0.487381, 0.873189)
+bones/24/rotation = Quaternion(-0.000175274, -0.000690898, -0.00082577, 0.999999)
+bones/25/rotation = Quaternion(0.000215507, -0.000719932, 0.485183, 0.874412)
+bones/26/rotation = Quaternion(-0.000163005, -0.000733376, -0.00251515, 0.999997)
+bones/27/rotation = Quaternion(-0.149367, -0.0514738, 0.798161, 0.581359)
+bones/29/rotation = Quaternion(0.0324594, -0.00622536, -0.0551208, 0.997933)
+bones/30/rotation = Quaternion(-0.133368, -0.00258048, -0.0115854, 0.990996)
+bones/31/rotation = Quaternion(-0.069124, -0.0851078, 0.387461, 0.915343)
+bones/32/rotation = Quaternion(-0.000154795, 0.000406513, -0.00185235, 0.999998)
+bones/33/rotation = Quaternion(-0.176013, -0.0111385, 0.0636981, 0.982262)
+bones/34/rotation = Quaternion(-0.244855, 0.0476381, 0.470379, 0.846475)
+bones/35/rotation = Quaternion(-0.0692854, 0.0849263, -0.385366, 0.916232)
+bones/36/rotation = Quaternion(-0.000755735, -0.00205802, 0.00930406, 0.999954)
+bones/37/rotation = Quaternion(-0.176535, 0.00775799, -0.0560292, 0.982668)
+bones/38/rotation = Quaternion(-0.243429, -0.0541053, -0.459691, 0.852349)
+bones/39/position = Vector3(-1.62001, -0.16781, -0.0404398)
+bones/40/position = Vector3(-2.25225, -0.169595, 0.0776796)
+bones/40/scale = Vector3(-1, -1, -1)
+bones/41/position = Vector3(-2.89229, -0.16964, 0.0806309)
+bones/41/scale = Vector3(-1, -1, -1)
+bones/42/rotation = Quaternion(-0.671948, -6.17867e-07, 8.22691e-07, 0.740599)
+bones/43/rotation = Quaternion(-0.131017, -0.0797722, 0.308948, 0.938628)
+bones/44/rotation = Quaternion(-0.0808757, -0.22896, 0.56707, 0.787063)
+bones/45/rotation = Quaternion(-0.325781, -0.220136, -0.412752, 0.82161)
+bones/46/rotation = Quaternion(1.03587e-06, 3.78604e-09, 0.963891, 0.266297)
+bones/47/rotation = Quaternion(0.27566, -0.0160889, -0.0560006, 0.959488)
+bones/50/rotation = Quaternion(-6.56873e-07, -1.04355e-07, 0.963891, -0.266297)
+bones/51/rotation = Quaternion(0.27564, 0.017362, 0.0602623, 0.959213)
+bones/52/rotation = Quaternion(-0.844191, -0.0977609, -0.0758957, 0.52156)
+bones/53/rotation = Quaternion(-0.140812, -0.0570431, -0.0632605, 0.986365)
+bones/54/rotation = Quaternion(0.66345, 0.0553455, -0.645446, -0.374393)
+bones/55/rotation = Quaternion(0.660605, -0.166114, 0.659, -0.318946)
+bones/56/rotation = Quaternion(-0.688833, -0.000566594, 0.348962, 0.635401)
+bones/57/rotation = Quaternion(-0.584841, 0.241043, 0.0525366, 0.772722)
+bones/58/rotation = Quaternion(-0.199469, 0.111336, -0.474494, 0.850101)
+bones/59/rotation = Quaternion(-2.68908e-07, 1.21769e-07, -0.525965, 0.850506)
+bones/60/rotation = Quaternion(-0.157186, 0.0877356, -0.479419, 0.858925)
+bones/61/rotation = Quaternion(-3.77138e-08, -7.56082e-08, -0.478208, 0.878247)
+bones/63/rotation = Quaternion(-2.30163e-07, 2.24145e-07, -0.478208, 0.878247)
+bones/65/rotation = Quaternion(1.56987e-09, 2.41341e-08, -0.371933, 0.92826)
+bones/66/rotation = Quaternion(-0.0948875, -0.422798, -0.485815, 0.759093)
+bones/68/rotation = Quaternion(0.66345, -0.0553455, 0.645446, -0.374393)
+bones/70/rotation = Quaternion(-0.407571, 0.304114, 0.752247, 0.418956)
+bones/71/rotation = Quaternion(0.165493, 0.00352205, 0.121134, 0.978737)
+bones/73/position = Vector3(0.154562, 0.117056, 0.0510327)
+bones/73/rotation = Quaternion(-0.535181, -0.344291, -0.723562, 0.267403)
+bones/74/rotation = Quaternion(0.159045, -0.00375707, -0.109107, 0.981217)
+bones/77/rotation = Quaternion(0.639927, -0.195444, 0.253158, 0.698717)
+bones/78/rotation = Quaternion(0.316037, 0.00805876, 0.00264049, 0.948709)
+bones/79/rotation = Quaternion(0.320063, 0.0130297, -0.00421143, 0.947297)
+bones/80/rotation = Quaternion(-0.398813, 0.067096, 0.107967, 0.908179)
+bones/81/rotation = Quaternion(-0.397055, 0.0127419, 0.0114776, 0.917634)
+bones/82/rotation = Quaternion(-0.291824, -0.0210823, -0.0224056, 0.955977)
+bones/83/rotation = Quaternion(-0.269139, 0.0350702, -0.0024115, 0.96246)
+bones/84/rotation = Quaternion(0.997065, -0.00143588, 7.64699e-05, -0.0765433)
+bones/85/rotation = Quaternion(0.0324058, 0.0287965, 0.0527599, 0.997666)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
+transform = Transform3D(0.303915, -0.952645, 0.0101994, -0.155445, -0.0390224, 0.987074, -0.939932, -0.301572, -0.159943, 2.64423, 4.47415, 3.00742)
+light_energy = 0.696
+shadow_enabled = true
+shadow_bias = 0.201
+shadow_blur = 0.101
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." index="2"]
+transform = Transform3D(-0.972468, 0.0878661, -0.215835, 0.0902831, 0.995915, -0.00134454, 0.214835, -0.0207937, -0.976429, -3.15127, 3.53511, -4.7474)
+light_energy = 0.651
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="." index="3"]
+transform = Transform3D(0.981257, 0.0790057, 0.175763, 0.0257176, 0.850243, -0.525762, -0.19098, 0.520428, 0.832275, -2.4208, 0, 0)
+light_color = Color(0.252547, 0.416755, 0.563096, 1)
+light_energy = 0.977
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." index="4"]
+transform = Transform3D(0.964727, -0.00578865, 0.263187, 0.00235549, 0.999908, 0.0133582, -0.26324, -0.0122671, 0.964652, 0.646292, 2.88187, 2.89374)
+fov = 61.7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5"]
+mesh = SubResource("QuadMesh_jvl0b")
+skeleton = NodePath("../Camera3D")
+surface_material_override/0 = SubResource("ShaderMaterial_jvl0b")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="6"]
+environment = SubResource("Environment_jvl0b")
+camera_attributes = SubResource("CameraAttributesPractical_iytjt")
+compositor = SubResource("Compositor_jvl0b")

@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dpggotycq7cdn"]
+
+[ext_resource type="Texture2D" uid="uid://ch2q3bv45fhow" path="res://Assets/Textures/Tex_Feluna/Blush/BLUSH.png" id="1_qxkv7"]
+
+[resource]
+transparency = 4
+blend_mode = 4
+cull_mode = 2
+shading_mode = 0
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_qxkv7")

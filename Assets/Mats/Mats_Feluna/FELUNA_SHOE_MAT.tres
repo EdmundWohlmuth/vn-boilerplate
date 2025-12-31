@@ -1,0 +1,39 @@
+[gd_resource type="ShaderMaterial" load_steps=10 format=3 uid="uid://qq544wkr6tqd"]
+
+[ext_resource type="Shader" uid="uid://y4v8x16mgifm" path="res://Assets/Mats/Mats_Feluna/FELUNA_SHOE_SHADER.gdshader" id="1_gucem"]
+[ext_resource type="Texture2D" uid="uid://ddajsj5577sie" path="res://Assets/Textures/Tex_Feluna/Shoe_TEX.png" id="2_io3ge"]
+
+[sub_resource type="Gradient" id="Gradient_dknle"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.783333, 0.875)
+colors = PackedColorArray(0.168075, 0.127698, 0.176942, 1, 0.329701, 0.291891, 0.304937, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3km0j"]
+gradient = SubResource("Gradient_dknle")
+
+[sub_resource type="Gradient" id="Gradient_0i176"]
+offsets = PackedFloat32Array(0.620833, 0.645833)
+colors = PackedColorArray(1, 1, 1, 1, 0.584276, 0.536296, 0.687088, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_myg6a"]
+gradient = SubResource("Gradient_0i176")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rolj2"]
+load_path = "res://.godot/imported/DITHER_TEX.png-6586e24665ba4e952f2c26f9eb2bc4ef.s3tc.ctex"
+
+[sub_resource type="Gradient" id="Gradient_nppfp"]
+offsets = PackedFloat32Array(0, 0.3375)
+colors = PackedColorArray(0.190762, 0.190762, 0.190762, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cqg4j"]
+gradient = SubResource("Gradient_nppfp")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gucem")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_3km0j")
+shader_parameter/depth_gradient = SubResource("GradientTexture1D_myg6a")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_cqg4j")
+shader_parameter/diffuse_texture = ExtResource("2_io3ge")
+shader_parameter/dither_texture = SubResource("CompressedTexture2D_rolj2")

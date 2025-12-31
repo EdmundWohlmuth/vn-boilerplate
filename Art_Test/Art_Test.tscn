@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqsd7bcqx5h3h"]
+
+[ext_resource type="PackedScene" uid="uid://byn2f4t78opxj" path="res://Assets/Models/TEST_MODEL_01.glb" id="1_wc02v"]
+
+[node name="ArtTest" type="Node3D"]
+
+[node name="TEST_MODEL_01" parent="." instance=ExtResource("1_wc02v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00297511, 0, 0.104143)
