@@ -1,0 +1,61 @@
+[gd_resource type="ShaderMaterial" load_steps=15 format=3 uid="uid://c4vpkur8dwovf"]
+
+[ext_resource type="Shader" uid="uid://b34v3w7olcjso" path="res://Assets/Mats/Mats_Feluna/FELUNA_HAIR_SHADER.gdshader" id="1_d621m"]
+[ext_resource type="Texture2D" uid="uid://ck4b75o7b6y8u" path="res://Art_Test/Shaders/DITHER_TEX.png" id="2_y0xxl"]
+
+[sub_resource type="Gradient" id="Gradient_pn3tk"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.783333, 0.875)
+colors = PackedColorArray(0.168075, 0.127698, 0.176942, 1, 0.329701, 0.291891, 0.304937, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hfnfn"]
+gradient = SubResource("Gradient_pn3tk")
+
+[sub_resource type="Gradient" id="Gradient_d621m"]
+offsets = PackedFloat32Array(0.387931)
+colors = PackedColorArray(0.673858, 0.706509, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y0xxl"]
+gradient = SubResource("Gradient_d621m")
+
+[sub_resource type="Gradient" id="Gradient_hfnfn"]
+offsets = PackedFloat32Array(0.262931, 0.310345)
+colors = PackedColorArray(1, 1, 1, 1, 0.472087, 0.546876, 0.720136, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4aruv"]
+gradient = SubResource("Gradient_hfnfn")
+
+[sub_resource type="Curve" id="Curve_y0xxl"]
+_data = [Vector2(0.37594, 0.255102), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6c1fb"]
+_data = [Vector2(0.285714, 0.306122), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_w4mrq"]
+_data = [Vector2(0.334586, 0.265306), 0.0, 0.0, 0, 0, Vector2(0.992481, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_lgl0f"]
+curve_x = SubResource("Curve_y0xxl")
+curve_y = SubResource("Curve_6c1fb")
+curve_z = SubResource("Curve_w4mrq")
+
+[sub_resource type="Gradient" id="Gradient_4aruv"]
+offsets = PackedFloat32Array(0.2375, 0.354167)
+colors = PackedColorArray(0.0295066, 0.0295066, 0.0295065, 1, 0.0211958, 0.0211958, 0.0211958, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jxyn5"]
+gradient = SubResource("Gradient_4aruv")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_d621m")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_hfnfn")
+shader_parameter/depth_gradient = SubResource("GradientTexture1D_4aruv")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_jxyn5")
+shader_parameter/depth_colour = SubResource("GradientTexture1D_y0xxl")
+shader_parameter/diffuse_texture = SubResource("CurveXYZTexture_lgl0f")
+shader_parameter/dither_texture = ExtResource("2_y0xxl")

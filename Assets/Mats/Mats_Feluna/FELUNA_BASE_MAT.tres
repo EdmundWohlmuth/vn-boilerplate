@@ -1,0 +1,45 @@
+[gd_resource type="ShaderMaterial" load_steps=12 format=3 uid="uid://q7r7fj644bm0"]
+
+[ext_resource type="Shader" uid="uid://q3sonirdhfmb" path="res://Assets/Mats/Mats_Feluna/FELUNA_BASE_SHADER.gdshader" id="1_4aruv"]
+[ext_resource type="Texture2D" uid="uid://d1t5p20p7mbjg" path="res://Assets/Textures/Tex_Feluna/Tex_body_Base_2.png" id="1_pn3tk"]
+[ext_resource type="Texture2D" uid="uid://ck4b75o7b6y8u" path="res://Art_Test/Shaders/DITHER_TEX.png" id="2_hfnfn"]
+
+[sub_resource type="Gradient" id="Gradient_pn3tk"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.783333, 0.875)
+colors = PackedColorArray(0.168075, 0.127698, 0.176942, 1, 0.329701, 0.291891, 0.304937, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hfnfn"]
+gradient = SubResource("Gradient_pn3tk")
+
+[sub_resource type="Gradient" id="Gradient_jxyn5"]
+offsets = PackedFloat32Array(0.551724)
+colors = PackedColorArray(0.00229247, 0.237143, 0.880472, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o8k6t"]
+gradient = SubResource("Gradient_jxyn5")
+
+[sub_resource type="Gradient" id="Gradient_hfnfn"]
+offsets = PackedFloat32Array(0.288793, 0.293103)
+colors = PackedColorArray(1, 1, 1, 1, 0.559465, 0.645122, 0.977334, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4aruv"]
+gradient = SubResource("Gradient_hfnfn")
+
+[sub_resource type="Gradient" id="Gradient_4aruv"]
+offsets = PackedFloat32Array(0, 0.3375)
+colors = PackedColorArray(0.190762, 0.190762, 0.190762, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jxyn5"]
+gradient = SubResource("Gradient_4aruv")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4aruv")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_hfnfn")
+shader_parameter/depth_gradient = SubResource("GradientTexture1D_4aruv")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_jxyn5")
+shader_parameter/depth_colour = SubResource("GradientTexture1D_o8k6t")
+shader_parameter/diffuse_texture = ExtResource("1_pn3tk")
+shader_parameter/dither_texture = ExtResource("2_hfnfn")
