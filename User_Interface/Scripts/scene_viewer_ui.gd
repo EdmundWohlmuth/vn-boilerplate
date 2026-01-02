@@ -22,7 +22,7 @@ func _on_panel_mouse_entered() -> void:
 func _on_panel_mouse_exited() -> void:
   is_on_panel = false
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
   if Input.is_action_just_pressed("Click") && is_on_panel:
     scene_viewer.change_rot_index(true)
     plabel.text = "[center]" + str(scene_viewer.rot_degs[scene_viewer.rot_index]) + " Degs" + "[/center]"

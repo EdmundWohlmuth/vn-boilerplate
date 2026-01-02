@@ -1,24 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxm3jnbjv060r"]
+[gd_scene load_steps=4 format=3 uid="uid://bxm3jnbjv060r"]
 
 [ext_resource type="Script" uid="uid://743dffeja1b4" path="res://Gameplay/Scripts/scene_viewer.gd" id="1_kt261"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_kt261"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kt261"]
-albedo_color = Color(0.968627, 0, 1, 1)
+[ext_resource type="PackedScene" uid="uid://cqsd7bcqx5h3h" path="res://Art_Test/Art_Test.tscn" id="2_d1iv6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kt261"]
 
 [node name="SceneViewer" type="Node3D" node_paths=PackedStringArray("char_01")]
 script = ExtResource("1_kt261")
-char_01 = NodePath("MeshInstance3D")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_kt261")
-surface_material_override/0 = SubResource("StandardMaterial3D_kt261")
+char_01 = NodePath("ArtTest")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8947, 3.4)
 
 [node name="Terrain" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -0.9, 0)
@@ -34,3 +26,5 @@ mesh = SubResource("PlaneMesh_kt261")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-4.2222e-08, -0.258819, 0.965926, -1.13133e-08, 0.965926, 0.258819, -1, 0, -4.37114e-08, 7.2, 4.7, 0)
+
+[node name="ArtTest" parent="." instance=ExtResource("2_d1iv6")]

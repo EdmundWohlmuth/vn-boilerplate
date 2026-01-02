@@ -6,7 +6,7 @@ var rot_index:int = 1
 var deg_to_rotate:int = 15
 
 # === Characters === #
-@export var char_01:MeshInstance3D
+@export var char_01:Node3D
 
 func _ready() -> void:
   UiManager.scene_viewer_ui.scene_viewer = self

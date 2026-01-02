@@ -5,6 +5,7 @@ class_name stage_manager
 @onready var off_stage_left: Node3D = $OffStageLeft
 @onready var off_stage_right: Node3D = $OffStageRight
 const TEMP = preload("res://Gameplay/Scenes/temp.tscn")
+const ART_TEST = preload("res://Art_Test/Art_Test.tscn")
 @onready var delete_timer: Timer = $Delete_Act_Timer
 
 # === Position Vars === #
@@ -41,16 +42,16 @@ func add_actor(actor_name:StringName, enter_text:StringName = "LEFT", num_to_add
   var enter_from:enter_pos
   # iterate through current 'actors' so not to add soneone who's already there
   for actor in actor_array:
-    if actor.char_name == actor_name:
-      return
+    if actor.char_name == actor_name: return
+      
   # Translate StringName to enum
   match enter_text:
     "LEFT": enter_from = enter_pos.LEFT
     "RIGHT": enter_from = enter_pos.RIGHT
   
-  var instance = TEMP.instantiate()
+  var instance = ART_TEST.instantiate()
   instance.char_name = actor_name
-  add_child(instance) ## This will cause bugs <-- Fix me pls
+  add_child(instance)
 
   match enter_from:
     enter_pos.LEFT: 
