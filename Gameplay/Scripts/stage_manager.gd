@@ -34,6 +34,7 @@ var removed_char
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
   GameManager.stage_m = self
+  SignalBus.connect("set_animation", find_anim_actor)
   
   total_space = ((off_stage_left.position.x + off_stage_right.position.x) - off_stage_left.position.x)
 
@@ -112,6 +113,11 @@ func remove_actor(to_remove:StringName, exit_dir:StringName = "RIGHT"): ## JUST 
     actors_num -= 1
     set_positions()
     return
+
+func find_anim_actor(char:StringName, anim:StringName):
+  for actor in actor_array:
+    if actor.char_name == char:
+      actor.play_anim(anim)
 
 # this will place all characters based on the required setup from load game
 func load_scene():

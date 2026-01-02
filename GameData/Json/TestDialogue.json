@@ -9,14 +9,14 @@
          
       "Name": "TEST CHAR",
       "Text": "yo, this is a [color=hotpink]Long Ass BBCode[/color], and a test Dialogue",
-      "Face": 1
+      "Anim_Char": ["TEST CHAR"],
+      "Anim":["Char_Idle_01"]
       },
       
       "1": 
       {
       "Name": "TEST CHAR",
-      "Text": "crazyest shit i've ever seen 😆",
-      "Face": 1
+      "Text": "crazyest shit i've ever seen 😆"
       },
       
       "2": 
@@ -27,7 +27,8 @@
         
       "Name": "DEBUG CHAR",
       "Text": "YOOOO I'M HERE TOO",
-      "Face": 1,
+      "Anim_Char": ["TEST CHAR", "DEBUG CHAR"],
+      "Anim":["Char_Idle_01", "Char_Idle_01"],
       
       "Options": true,
       "Options_Num": 2,
@@ -49,7 +50,7 @@
         
       "Name": "Giancarlo Esposito",
       "Text": "I need my Test dialogue Two",
-      "Face": 1,
+      "Anim": 1,
       
       "End_Chapter": true,
       "Chapter_Index": 1,
@@ -62,7 +63,7 @@
       {
       "Name": "TEST CHAR",
       "Text": "The joke was in test dialogue 2, this is three!",
-      "Face": 1,
+      "Anim": 1,
       
       "Goto": true,
       "Goto_Text": "TEST_DIALOGUE"

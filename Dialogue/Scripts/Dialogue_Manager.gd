@@ -12,10 +12,6 @@ extends Control
 # == DATA == #
 var dialogue_data = {}
 
-# == SIGNALS == #
-#signal add_char
-#signal remove_char
-
 # == BOOLS == #
 var is_selected:bool = false
 var is_text_finished:bool = false
@@ -73,6 +69,7 @@ func slow_display_text(text:String):
   
   # Check if a character needs to be added / removed
   character_check()
+  set_animation()
   
   # Iterate through the String and add the next letter to the Textbox
   for i in text.length():
@@ -119,11 +116,17 @@ func full_display_text(text:String):
   is_text_finished = true
   index += 1
 
+# Finds the property "Anim" and "Anim_Char" in the dialogue then sets the characters animation
+func set_animation():
+  if dialogue[str(index)].has("Anim_Char") && dialogue[str(index)].has("Anim"):
+    var char_list = dialogue[str(index)]["Anim_Char"]
+    var anim_list = dialogue[str(index)]["Anim"]
+    
+    for x in char_list.size():
+      SignalBus.emit_signal("set_animation", char_list[x], anim_list[x])
+
+
 func _input(event):
-  #if event.is_action_pressed("Click") && !is_read:
-    #is_read = true
-    #start_dialogue("TEST_DIALOGUE")
-  
   # Skip slow print out of dialogue on click 
   if (event.is_action_pressed("Click") && is_selected && !is_text_finished):
     full_display_text(dialogue[str(index)]["Text"])
