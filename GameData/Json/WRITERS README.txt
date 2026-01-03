@@ -26,7 +26,6 @@ Some notes on creating Dialogues:
       {
       "Name": "FELUNA", # This text is put at the top where the character's name goes
       "Text": "I would be funny but this is a [color=blue] L E A R N I N G[/color] experience.", # the main body of the dialogue box, note the use of BBCode with [color=][/color]
-      "Face": 1, # sprite / animation / whatever the character will use
       
       "Goto": true, # Denotes that once this ends it will find a dialogue in this JSON by the String provided below
       "Goto_Text": "TEST_DIALOGUE_2" # This is the string provided, it MUST be in this json file, otherwise use "End_Chapter"=true
@@ -39,7 +38,6 @@ Some notes on creating Dialogues:
       {
       "Name": "FELUNA",
       "Text": "Isn't learning [color=red]fun[/color]...?",
-      "Face": 1,
       
       "Options": true,
       "Options_Num": 3,
@@ -63,5 +61,12 @@ Some notes on creating Dialogues:
   6. To remove a character you need to add the following keys:
       "Remove_Char": "Giancarlo Esposito",
       "Exit_To": "LEFT",
+
+7. To set animations for the current dialogue the JSON uses to arrays - one with the character names and
+   another with the animation to play, the order in which the character names are correlates to the animations
+   they will use. For an example here are the two arrays:
+    
+   "Anim_Char": ["TEST CHAR", "DEBUG CHAR", "ANOTHER CHAR"],
+   "Anim": ["Char_Idle_01", "Char_Idle_02", "Char_Laugh_01"],
   
-  # EXAMPLE FINISHED
+   Above, the character in Index 2, ANOTHER CHAR, will use the Animation at Index 2, Char_Laugh_01

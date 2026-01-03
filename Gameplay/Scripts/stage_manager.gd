@@ -39,7 +39,7 @@ func _ready() -> void:
   total_space = ((off_stage_left.position.x + off_stage_right.position.x) - off_stage_left.position.x)
 
 # Starts the process to adding a character to the scene
-func add_actor(actor_name:StringName, enter_text:StringName = "LEFT", num_to_add:int = 1):
+func add_actor(actor_name:StringName, enter_text:StringName = "LEFT", _num_to_add:int = 1):
   var enter_from:enter_pos
   # iterate through current 'actors' so not to add soneone who's already there
   for actor in actor_array:
@@ -68,7 +68,7 @@ func add_actor(actor_name:StringName, enter_text:StringName = "LEFT", num_to_add
   set_positions(enter_from)
 
 # Sets the Vector3 Positions where characters will be placed
-func set_positions(enter_from:enter_pos = enter_pos.LEFT):
+func set_positions(_enter_from:enter_pos = enter_pos.LEFT):
   if actors_num <= 0: return
   # Set vars
   var pos:Vector3 = position_offset
@@ -114,9 +114,9 @@ func remove_actor(to_remove:StringName, exit_dir:StringName = "RIGHT"): ## JUST 
     set_positions()
     return
 
-func find_anim_actor(char:StringName, anim:StringName):
+func find_anim_actor(char_to_find:StringName, anim:StringName):
   for actor in actor_array:
-    if actor.char_name == char:
+    if actor.char_name == char_to_find:
       actor.play_anim(anim)
 
 # this will place all characters based on the required setup from load game

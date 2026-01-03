@@ -12,9 +12,9 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
   Scene_Manager.load_scene("STAGE")
-  UiManager.set_dialogue()
+  #UiManager.set_dialogue()
   
 
 func _on_button_2_pressed() -> void:
   Scene_Manager.load_scene("VIEWER")
-  UiManager.set_scene_viewer()
+  #UiManager.set_scene_viewer()

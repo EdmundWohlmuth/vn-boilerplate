@@ -5,6 +5,7 @@ extends Control
 @onready var loading_screen: Control = $loading_screen
 @onready var main_menu: Control = $Main_Menu
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
   SignalBus.connect("gameplay_loaded", set_dialogue)
@@ -17,7 +18,7 @@ func set_main_menu():
   scene_viewer_ui.visible = false
   dialogue_box.visible = false
 
-func set_dialogue():
+func set_dialogue(dialogue:StringName):
   main_menu.visible = false
   scene_viewer_ui.visible = false
   dialogue_box.visible = true
@@ -25,4 +26,9 @@ func set_dialogue():
 func set_scene_viewer():
   main_menu.visible = false
   scene_viewer_ui.visible = true
+  dialogue_box.visible = false
+
+func hide_ui():
+  main_menu.visible = false
+  scene_viewer_ui.visible = false
   dialogue_box.visible = false

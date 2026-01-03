@@ -10,3 +10,5 @@ script = ExtResource("1_72wj8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00297511, 0, 0.104143)
 
 [node name="DeleteTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]

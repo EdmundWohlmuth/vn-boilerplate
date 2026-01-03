@@ -24,7 +24,6 @@ visible = false
 layout_mode = 1
 
 [node name="loading_screen" parent="." instance=ExtResource("3_hqko7")]
-visible = false
 layout_mode = 1
 
 [node name="Main_Menu" parent="." instance=ExtResource("5_7rp2k")]

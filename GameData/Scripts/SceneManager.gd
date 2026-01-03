@@ -19,9 +19,9 @@ func load_scene(scene:StringName):
     "VIEWER": path = SCENE_VIEWER_SCENE
   
   # Call the loading Screen to fade in
-  #UiManager.loadingScene.fade_in()
+  SignalBus.emit_signal("load_fade_in")
   # Remove the Current Scene
-  remove_child(current_scene)
+  get_parent().remove_child(current_scene)
   # Async Load the next Scene
   ResourceLoader.load_threaded_request(path)
   is_loading = true
@@ -32,12 +32,15 @@ func _process(_delta: float) -> void:
     if ResourceLoader.load_threaded_get_status(path) == ResourceLoader.THREAD_LOAD_LOADED:
       current_scene = ResourceLoader.load_threaded_get(path).instantiate()
       await get_tree().create_timer(minimum_load_time).timeout
-      add_child(current_scene)
-      #UiManager.loadingScene.fade_out()
+      get_parent().add_child(current_scene)
+      SignalBus.emit_signal("load_fade_out")
       is_loading = false
       # emit correct signal
       match path:
-        MAIN_MENU_SCENE: SignalBus.emit_signal("main_menu_loaded")
-        STAGE_SCENE: SignalBus.emit_signal("gameplay_loaded", "TEST_DIALOGUE")
-        SCENE_VIEWER_SCENE: SignalBus.emit_signal("scene_view_loaded")
+        MAIN_MENU_SCENE: 
+          SignalBus.emit_signal("main_menu_loaded")
+        STAGE_SCENE: 
+          SignalBus.emit_signal("gameplay_loaded", "TEST_DIALOGUE")
+        SCENE_VIEWER_SCENE: 
+          SignalBus.emit_signal("scene_view_loaded")
     
