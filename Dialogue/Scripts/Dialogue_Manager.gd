@@ -70,6 +70,7 @@ func slow_display_text(text:String):
   # Check if a character needs to be added / removed
   character_check()
   set_animation()
+  GameManager.stage_m.pop_actor_forward(dialogue[str(index)]["Name"])
   
   # Iterate through the String and add the next letter to the Textbox
   for i in text.length():

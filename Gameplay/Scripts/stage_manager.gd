@@ -114,10 +114,18 @@ func remove_actor(to_remove:StringName, exit_dir:StringName = "RIGHT"): ## JUST 
     set_positions()
     return
 
+# Find the characters who are animated and call their animations
 func find_anim_actor(char_to_find:StringName, anim:StringName):
   for actor in actor_array:
     if actor.char_name == char_to_find:
       actor.play_anim(anim)
+
+# Brings forward the speaking characters
+func pop_actor_forward(char_to_find:StringName):
+  for actor in actor_array:
+    var tween = get_tree().create_tween()
+    if actor.char_name == char_to_find: tween.tween_property(actor, "scale", Vector3(1.1,1.1,1.1), 0.1)
+    else: tween.tween_property(actor, "scale", Vector3(1,1,1), 0.1)
 
 # this will place all characters based on the required setup from load game
 func load_scene():

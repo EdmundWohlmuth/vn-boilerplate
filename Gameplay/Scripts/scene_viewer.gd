@@ -26,5 +26,7 @@ func change_rot_index(increase_index:bool):
 
 # Roatate the character
 func roatate_character(clockwise:bool):
-  if clockwise: char_01.rotation_degrees += Vector3(0, deg_to_rotate, 0)
-  else: char_01.rotation_degrees -= Vector3(0, deg_to_rotate, 0)
+  var tween = get_tree().create_tween()
+  if clockwise: 
+    tween.tween_property(char_01, "global_rotation_degrees", Vector3(0, char_01.global_rotation_degrees.y + deg_to_rotate, 0), 0.1)
+  else: tween.tween_property(char_01, "global_rotation_degrees", Vector3(0, char_01.global_rotation_degrees.y - deg_to_rotate, 0), 0.1)

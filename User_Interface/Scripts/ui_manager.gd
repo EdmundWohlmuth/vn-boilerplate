@@ -18,7 +18,7 @@ func set_main_menu():
   scene_viewer_ui.visible = false
   dialogue_box.visible = false
 
-func set_dialogue(dialogue:StringName):
+func set_dialogue(_dialogue:StringName):
   main_menu.visible = false
   scene_viewer_ui.visible = false
   dialogue_box.visible = true
